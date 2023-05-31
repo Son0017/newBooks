@@ -1,11 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useFetch } from "../hooks/useFetch";
+import { useBooksProvider } from "../context/book_context";
 
 function UserList() {
   const { deleteUser, changeRole } = useFetch();
-  const users = useSelector((state) => state.users);
+  const users = useBooksProvider();
   return (
     <UserListStyled>
       <section className="section">

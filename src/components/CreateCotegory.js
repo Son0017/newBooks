@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useFetch } from "../hooks/useFetch";
 import Cocktail from "./Cocktail";
+import { useBooksProvider } from "../context/book_context";
 
 function CreateCotegory() {
-  const { books, category, categoryList } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const { books, category, categoryList, dispatch } = useBooksProvider();
   const [name, setName] = useState("");
   const { createCategory, cheakedBooks } = useFetch();
   const handleSubmit = (e) => {

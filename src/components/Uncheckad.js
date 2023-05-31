@@ -1,10 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+
 // import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import Cocktail from "./Cocktail";
+import { useBooksProvider } from "../context/book_context";
 function Uncheckad() {
-  const books = useSelector((state) => state.books);
+  const { books } = useBooksProvider();
   const { deleteUser, cheakedBooks } = useFetch();
 
   return (

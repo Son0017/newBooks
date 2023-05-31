@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-// import { useSelector } from "react-redux";
 import { useBooksProvider } from "../context/book_context";
 const Cocktail = ({ item, coc }) => {
   const { userOne } = useBooksProvider((state) => state);
