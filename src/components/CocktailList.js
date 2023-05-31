@@ -11,14 +11,19 @@ function useGetBooks(changeCat = "") {
     let data = await getSaveBooks(
       "http://localhost:8090/api/book/allActiveBooks"
     );
-    data = data.filter((item) => {
-      if (item.category && changeCat.length > 0) {
-        return item.category.name.includes(changeCat);
+    let newdata = [];
+    data.forEach((item) => {
+      if (
+        item.category &&
+        changeCat.length > 0 &&
+        item.category.name.includes(changeCat)
+      ) {
+        newdata.push(item);
       } else if (changeCat.length === 0) {
-        return item;
+        newdata.push(item);
       }
     });
-    setBooks(data);
+    setBooks(newdata);
   }
   useEffect(() => {
     name();
