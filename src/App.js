@@ -16,25 +16,25 @@ import UserList from "./components/UserList";
 import SavedBooks from "./components/SavedBooks";
 
 function App() {
-  const state = useSelector((state) => state);
+  const { adminId, error, userOne } = useSelector((state) => state);
   const { getCategory } = useFetch();
   useEffect(() => {
     getCategory("http://localhost:8090/api/category/all");
-  }, [state]);
+  }, []);
 
   return (
     <Router>
       <Navbar />
-      {state.adminId && !state.error && <AdminSee />}
-      {!state.error && (
+      {adminId && !error && <AdminSee />}
+      {!error && (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/error" element={<Error />} />
           <Route path="/singlecocktail" element={<SingleCocktail />} />
           <Route path="/userlogup" element={<UserLog />} />
-          <Route path="/box" element={<SavedBooks user={state.userOne} />} />
-          {state.adminId && (
+          <Route path="/box" element={<SavedBooks user={userOne} />} />
+          {adminId && (
             <>
               <Route path="/cheaked" element={<Uncheckad />} />
               <Route path="/adminlog" element={<AdminLog />} />
@@ -45,7 +45,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       )}
-      {state.error && <Error></Error>}
+      {error && <Error></Error>}
     </Router>
   );
 }
