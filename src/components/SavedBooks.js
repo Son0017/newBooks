@@ -13,7 +13,6 @@ function SavedBooks({ user }) {
     );
     setBooks(data);
   }
-  console.log(user);
   useEffect(() => {
     getBooks(user);
   }, [user]);
