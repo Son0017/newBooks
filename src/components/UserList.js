@@ -6,7 +6,7 @@ import { useBooksProvider } from "../context/book_context";
 
 function UserList() {
   const { deleteUser, changeRole } = useFetch();
-  const users = useBooksProvider();
+  const { users } = useBooksProvider();
   return (
     <UserListStyled>
       <section className="section">
