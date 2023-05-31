@@ -1,7 +1,6 @@
 import React from "react";
 import CocktailList from "../components/CocktailList";
 import { useState } from "react";
-// import { useSelector } from "react-redux";
 import { useBooksProvider } from "../context/book_context";
 const Home = () => {
   const { categoryList } = useBooksProvider();
