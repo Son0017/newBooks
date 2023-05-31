@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+import { useBooksProvider } from "../context/book_context";
 
 const useFetch = () => {
-  const dispatch = useDispatch();
+  const { dispatch } = useBooksProvider();
   const requestUser = async (url) => {
     try {
       const res = await fetch(url);

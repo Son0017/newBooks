@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { BookUpload } from "../pages/SingleCocktail";
-import { useDispatch, useSelector } from "react-redux";
 import { useFetch } from "../hooks/useFetch";
+import { useBooksProvider } from "../context/book_context";
 
 function AdminLog() {
-  const users = useSelector((state) => state.users);
-  const dispatch = useDispatch();
+  const { dispatch, users } = useBooksProvider();
   const { postAdmin } = useFetch();
   let [user, setUser] = useState({
     roleName: "ADMIN",

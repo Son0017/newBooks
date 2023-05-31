@@ -6,7 +6,6 @@ import { SingleCocktail } from "./pages/SingleCocktail";
 import Error from "./pages/Error";
 import Navbar from "./components/Navbar";
 import UserLog from "./components/UserLog";
-import { useSelector } from "react-redux";
 import { useFetch } from "./hooks/useFetch";
 import AdminSee from "./components/AdminSee";
 import Uncheckad from "./components/Uncheckad";
@@ -14,13 +13,14 @@ import CreateCotegory from "./components/CreateCotegory";
 import AdminLog from "./components/AdminLog";
 import UserList from "./components/UserList";
 import SavedBooks from "./components/SavedBooks";
+import { useBooksProvider } from "./context/book_context";
 
 function App() {
-  const { adminId, error, userOne } = useSelector((state) => state);
+  const { adminId, error, userOne } = useBooksProvider();
   const { getCategory } = useFetch();
   useEffect(() => {
     getCategory("http://localhost:8090/api/category/all");
-  }, []);
+  }, [userOne]);
 
   return (
     <Router>
@@ -34,10 +34,10 @@ function App() {
           <Route path="/singlecocktail" element={<SingleCocktail />} />
           <Route path="/userlogup" element={<UserLog />} />
           <Route path="/box" element={<SavedBooks user={userOne} />} />
+          <Route path="/adminlog" element={<AdminLog />} />
           {adminId && (
             <>
               <Route path="/cheaked" element={<Uncheckad />} />
-              <Route path="/adminlog" element={<AdminLog />} />
               <Route path="/userlist" element={<UserList />} />
               <Route path="/createcategory" element={<CreateCotegory />} />
             </>

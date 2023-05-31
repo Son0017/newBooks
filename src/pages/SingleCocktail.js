@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useFetch } from "../hooks/useFetch";
 import Loading from "../components/Loading";
+import { useBooksProvider } from "../context/book_context";
 const SingleCocktail = () => {
-  const { useId, adminId, isPending } = useSelector((state) => state);
+  const { useId, adminId, isPending } = useBooksProvider();
   const { attachmentIdPost, lofoIdPost, bookPost } = useFetch();
   const [uploadBook, setUploadBook] = useState({
     categoryId: "",

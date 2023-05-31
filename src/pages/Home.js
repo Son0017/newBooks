@@ -1,9 +1,10 @@
 import React from "react";
 import CocktailList from "../components/CocktailList";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useBooksProvider } from "../context/book_context";
 const Home = () => {
-  const category = useSelector((state) => state.categoryList);
+  const { categoryList } = useBooksProvider();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -28,8 +29,8 @@ const Home = () => {
                 All
               </button>
             </li>
-            {category &&
-              category.map((item) => {
+            {categoryList &&
+              categoryList.map((item) => {
                 return (
                   <li className="menu-item" key={item.id}>
                     <button

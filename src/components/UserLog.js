@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { BookUpload } from "../pages/SingleCocktail";
-import { useDispatch, useSelector } from "react-redux";
 import { useFetch } from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { useBooksProvider } from "../context/book_context";
 
 function UserLog() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const users = useSelector((state) => state.users);
+  const { users, dispatch } = useBooksProvider();
   const { postUser } = useFetch();
   let [user, setUser] = useState({
     roleName: "USER",

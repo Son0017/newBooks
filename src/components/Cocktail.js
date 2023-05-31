@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useBooksProvider } from "../context/book_context";
 const Cocktail = ({ item, coc }) => {
-  const { userOne } = useSelector((state) => state);
+  const { userOne } = useBooksProvider((state) => state);
   const { savedBook, getContent } = useFetch();
   const [data, setData] = useState(null);
 
