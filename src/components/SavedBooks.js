@@ -11,6 +11,7 @@ function SavedBooks({ user }) {
     const data = await getSaveBooks(
       `http://localhost:8090/api/savedBook/getAllByUserId/${userid}`
     );
+
     setBooks(data);
   }
   useEffect(() => {
@@ -30,10 +31,11 @@ function SavedBooks({ user }) {
                   <button
                     className="btn btn-primary"
                     style={{ marginLeft: "1.5rem", marginBottom: "1.5rem" }}
-                    onClick={() => {
-                      deleteUser(
+                    onClick={async () => {
+                      await deleteUser(
                         `http://localhost:8090/api/savedBook/delete/${item.id}`
                       );
+                      getBooks(user);
                       setUpdate(!update);
                     }}
                   >
