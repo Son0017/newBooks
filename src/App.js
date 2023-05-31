@@ -20,7 +20,7 @@ function App() {
   const { getCategory } = useFetch();
   useEffect(() => {
     getCategory("http://localhost:8090/api/category/all");
-  }, []);
+  }, [userOne]);
 
   return (
     <Router>

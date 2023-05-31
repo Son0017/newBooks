@@ -7,10 +7,10 @@ import { Provider } from "react-redux";
 
 const locolSTorage = localStorage.getItem("userid")
   ? localStorage.getItem("userid")
-  : null;
+  : "";
 const sessionStorages = sessionStorage.getItem("admin")
   ? sessionStorage.getItem("admin")
-  : null;
+  : "";
 const reducer = (
   state = {
     users: null,
